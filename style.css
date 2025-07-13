@@ -40,8 +40,8 @@ body {
             font-size: 1.8em;
   font-weight: bold;
   text-align: center;
-  margin: 1em auto 1.5em;
-  padding: 1em;
+ 
+  padding: 1em 1.5em 1.5em 1.5em;
 
   line-height: 1.2;
 }
@@ -50,17 +50,20 @@ body {
   background: #fff3cd;
   border: 0.1em solid #ffc107;
   padding: 1em 1em 1.5em 0.5em;
-  margin: 1em 1em 1.5em 1em;
+  margin: 1em 3em 1.5em 3em;
   border-radius: 0.3em;
-  font-size: 0.9em;
+  font-size: 1.2em;
   color: #856404;
   text-align: center;
   font-weight: bold;
 }
 .quiz-container {
-  background: white;
-  border: 0.125em solid #ddd; /* 2px → 0.125em */
-  margin-bottom: 1.25em;      /* 20px → 1.25em */
+  background: rgb(245, 241, 241);
+
+  margin: 1em 3em 1.5em 3em;
+      /* 24px 20px */
+  border: 0.125em solid #ffffff; /* 2px → 0.125em */
+     /* 20px → 1.25em */
 }
 
 .progress-bar {
@@ -70,7 +73,7 @@ body {
 }
 
 .progress-fill {
-  height: 100%;
+ height: 0.35rem;   
   background: #28a745;
   width: 33%;
   transition: width 0.3s ease;
@@ -94,7 +97,7 @@ body {
 }
 
 .question h2 {
-  font-size: 1.5em;
+  font-size: 2em;
   margin-bottom: 1.5em;
   color: #333;
   font-weight: bold;
@@ -104,7 +107,8 @@ body {
   display: grid;
   gap: 0.625em;               /* 10px → 0.625em */
   margin-bottom: 1.25em;      /* 20px → 1.25em */
-  max-width: 25rem;           /* 400px → 25rem */
+  max-width: 45em;  
+  height: 10em;         /* 400px → 25rem */
   margin-left: auto;
   margin-right: auto;
 }
@@ -115,7 +119,7 @@ body {
   border-radius: 0.5em;
   cursor: pointer;
   transition: all 0.3s ease;
-  font-size: 1.05em;
+  font-size: 1.35em;
   font-weight: 500;
   color: #333;
   text-align: center;
