@@ -1,0 +1,16 @@
+{
+    "rewrites": [
+      {
+        "source": "/button",
+        "destination": "/button.html"
+    
+      },
+        
+      {
+        "source": "/",
+        "destination": "/index.html"
+       
+      }
+    ]
+  }
+  
