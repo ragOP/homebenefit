@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Call Now Button Variants</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #111;
+      color: white;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+      align-items: center;
+    }
+
+    h2 {
+      margin-bottom: 10px;
+    }
+
+    .btn {
+      padding: 14px 28px;
+      border: none;
+      color: white;
+      font-size: 18px;
+      cursor: pointer;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* Glow Variant */
+    .btn-glow {
+      background: #6200ea;
+      box-shadow: 0 0 10px #6200ea, 0 0 20px #9c27b0;
+    }
+
+    .btn-glow:hover {
+      box-shadow: 0 0 20px #9c27b0, 0 0 30px #6200ea;
+    }
+
+    /* Bounce Hover */
+    .btn-bounce {
+      background: #00c853;
+    }
+
+    .btn-bounce:hover {
+      animation: bounce 0.4s;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    /* Gradient Shine */
+    .btn-gradient {
+      background: linear-gradient(45deg, #00bcd4, #3f51b5);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-gradient::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -75%;
+      width: 50%;
+      height: 100%;
+      background: rgba(255,255,255,0.3);
+      transform: skewX(-25deg);
+    }
+
+    .btn-gradient:hover::after {
+      left: 125%;
+      transition: left 0.5s ease;
+    }
+
+    /* Ripple Effect */
+    .btn-ripple {
+      position: relative;
+      background: #e91e63;
+      overflow: hidden;
+    }
+
+    .btn-ripple:after {
+      content: "";
+      position: absolute;
+      background: rgba(255,255,255,0.4);
+      border-radius: 50%;
+      transform: scale(0);
+      width: 100px;
+      height: 100px;
+      animation: ripple 0.6s linear;
+      pointer-events: none;
+    }
+
+    .btn-ripple:active:after {
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(1);
+    }
+
+    @keyframes ripple {
+      to {
+        transform: translate(-50%, -50%) scale(2.5);
+        opacity: 0;
+      }
+    }
+
+    /* Mobile Shake */
+    .btn-shake {
+      background: #ff6f00;
+    }
+
+    @media (hover: none) {
+      .btn-shake:active {
+        animation: shake 0.3s;
+      }
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-5px); }
+      50% { transform: translateX(5px); }
+      75% { transform: translateX(-2px); }
+    }
+
+    /* Responsive Container */
+    .button-block {
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="button-block">
+    <h2>Glow Button</h2>
+    <button class="btn btn-glow" onclick="callNow()">Call Now</button>
+  </div>
+
+  <div class="button-block">
+    <h2>Bounce on Hover</h2>
+    <button class="btn btn-bounce" onclick="callNow()">Call Now</button>
+  </div>
+
+  <div class="button-block">
+    <h2>Gradient Shine</h2>
+    <button class="btn btn-gradient" onclick="callNow()">Call Now</button>
+  </div>
+
+  <div class="button-block">
+    <h2>Ripple on Click</h2>
+    <button class="btn btn-ripple" onclick="callNow()">Call Now</button>
+  </div>
+
+  <div class="button-block">
+    <h2>Shake on Mobile Tap</h2>
+    <button class="btn btn-shake" onclick="callNow()">Call Now</button>
+  </div>
+
+  <script>
+    function callNow() {
+      window.location.href = "tel:+919999999999"; // replace with your number
+    }
+  </script>
+</body>
+</html>
