@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Home benefit</title>
+</head>
+<body>
+    <div class="header-bar">
+        Home Insurance Reduction Program
+    </div>
+    <h1 class="headline">My Home Insurance Went From $285 a Month to JUST $42/Mo For Full Coverage</h1>
+    <p class="subheadline">See if you qualify for subsidy insurance in under 30 seconds!</p>
+    <div class="urgency-text">
+            ⚠️ LIMITED TIME: Subsidy Program Expires Soon - Check Eligibility Now
+        </div>
+
+        <div class="quiz-container">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+
+            <div class="question-container">
+                <!-- Question 1 -->
+                <div class="question active" id="q1">
+                    <h2>Are you a homeowner?</h2>
+                    <div class="options">
+                        <div class="option positive" onclick="selectAnswer('yes', 1)">
+                            Yes, I own my home
+                        </div>
+                        <div class="option negative" onclick="selectAnswer('no', 1)">
+                            No, I rent
+                        </div>
+                    </div>
+                </div>
+                <script>
+                let currentQuestion = 1;
+                const totalQuestions = 3;
+
+                function showQuestion(num) {
+                    for (let i = 1; i <= totalQuestions; i++) {
+                        document.getElementById('q' + i).classList.remove('active');
+                    }
+                    const questionDiv = document.getElementById('q' + num);
+                    if (questionDiv) {
+                        questionDiv.classList.add('active');
+                    }
+                    updateProgress(num);
+                }
+
+                function updateProgress(num) {
+                    const percent = ((num - 1) / totalQuestions) * 100;
+                    document.getElementById('progressFill').style.width = percent + '%';
+                }
+
+              function selectAnswer(answer, questionNum) {
+  // Remove .selected from all options in this question
+  const qDiv = document.getElementById('q' + questionNum);
+  const opts = qDiv.querySelectorAll('.option');
+  opts.forEach(opt => opt.classList.remove('selected'));
+
+  // Add .selected to the clicked option
+  event.currentTarget.classList.add('selected');
+
+  // Optional: Ripple effect
+  let ripple = document.createElement('span');
+  ripple.className = 'ripple';
+  event.currentTarget.appendChild(ripple);
+  setTimeout(() => ripple.remove(), 400);
+
+  // Advance to next question or show congrats
+  setTimeout(() => {
+    if (questionNum < totalQuestions) {
+      currentQuestion++;
+      showQuestion(currentQuestion);
+    } else {
+      document.querySelector('.question-container').style.display = 'none';
+      showCongrats();
+    }
+  }, 300); // Wait so animation is visible
+}
+
+                function showCongrats() {
+                    const quizContainer = document.querySelector('.quiz-container');
+                    const congoDiv = document.createElement('div');
+                    congoDiv.className = 'congo-div';
+                    congoDiv.innerHTML = `
+                        <h2>Congratulations!</h2>
+                        <p>You may qualify for the Home Insurance Reduction Program.</p>
+                        <p>Our team will contact you soon with your results.</p>
+                    `;
+                    quizContainer.appendChild(congoDiv);
+                }
+
+                document.addEventListener('DOMContentLoaded', function() {
+                    showQuestion(currentQuestion);
+                    updateProgress(currentQuestion);
+                });
+                </script>
+                <!-- Question 2 -->
+                <div class="question" id="q2">
+                    <h2>Is your home currently insured?</h2>
+                    <div class="options">
+                        <div class="option positive" onclick="selectAnswer('yes', 2)">
+                            Yes, I have home insurance
+                        </div>
+                        <div class="option negative" onclick="selectAnswer('no', 2)">
+                            No, I need new coverage
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Question 3 -->
+                <div class="question" id="q3">
+                    <h2>What is your age group?</h2>
+                    <div class="options">
+                        <div class="option neutral" onclick="selectAnswer('18-24', 3)">
+                            18 to 24
+                        </div>
+                        <div class="option neutral" onclick="selectAnswer('25-34', 3)">
+                            25 to 34
+                        </div>
+                        <div class="option neutral" onclick="selectAnswer('35-44', 3)">
+                            35 to 44
+                        </div>
+                        <div class="option neutral" onclick="selectAnswer('45-54', 3)">
+                            45 to 54
+                        </div>
+                        <div class="option neutral" onclick="selectAnswer('55-64', 3)">
+                            55 to 64
+                        </div>
+                        <div class="option neutral" onclick="selectAnswer('65+', 3)">
+                            65+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="social-proof-section">
+            <div class="social-proof-header">
+                ⭐ What Our Customers Are Saying
+            </div>
+            
+            <div class="review">
+                <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                <div class="review-text">
+              I couldn’t believe it when my home insurance went from $315/month to just $49/month! This subsidy program saved me over $3,000 a year. The process was quick and easy.
+                </div>
+                <div class="review-author">Angela M.</div>
+                <div class="review-location">Zampa, Miami</div>
+            </div>
+
+            <div class="review">
+                <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                <div class="review-text">
+                  My friend mentioned this program and I didn’t believe it. But I really am saving $268/month on my insurance with the same great coverage!
+                </div>
+                <div class="review-author">Jamine K.</div>
+                <div class="review-location">Simons, Zonal</div>
+            </div>
+        </div>
+</body>
+</html>

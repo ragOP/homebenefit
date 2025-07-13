@@ -10,6 +10,11 @@
         "source": "/home",
         "destination": "/index.html"
        
+      },
+       {
+        "source": "/home",
+        "destination": "/home.html"
+       
       }
     ]
   }
