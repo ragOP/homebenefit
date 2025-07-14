@@ -1,21 +1,16 @@
 {
-    "rewrites": [
-      {
-        "source": "/button",
-        "destination": "/button.html"
-    
-      },
-        
-      {
-        "source": "/home",
-        "destination": "/index.html"
-       
-      },
-       {
-        "source": "/home",
-        "destination": "/home.html"
-       
-      }
-    ]
-  }
-  
+  "rewrites": [
+    {
+      "source": "/button",
+      "destination": "/button.html"
+    },
+    {
+      "source": "/",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/home",
+      "destination": "/home.html"
+    }
+  ]
+}
