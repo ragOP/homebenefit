@@ -406,3 +406,26 @@ body {
   color: #777;
   margin-top: 1rem;
 }
+
+.checking{
+  justify-content: center;
+  /* align-items: center; */
+  text-align: center;
+  padding: 1.5em;
+  background-color:#e9f2ff;
+  border-top: 2px solid rgb(59 130 246);
+  margin: 1rem;
+  max-width: 48rem;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  color: #1f2937;
+  height: 20em;
+}
+
+.sub-description{
+  font-size: 1rem;
+  line-height: 1.5rem;
+  margin: 1rem 0;
+}
