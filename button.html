@@ -1,283 +1,50 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Call Now Buttons</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Call Now Button</title>
 
-<style>
-  :root {
-    --bg-1: linear-gradient(to right, #00c6ff, #0072ff);
-    --shadow-1: 0 0 15px rgba(0, 114, 255, 0.7);
-    --anim-1: pulse-blue 2s infinite;
+  <style>
+    :root {
+      --bg-4: linear-gradient(to right, #00f2fe, #4facfe);
+      --shadow-4: 0 0 20px rgba(0, 242, 254, 0.6);
+      --anim-4: scaleUp 2s infinite;
+    }
 
-    --bg-2: linear-gradient(to right, #fc466b, #3f5efb);
-    --shadow-2: 0 0 15px rgba(252, 70, 107, 0.7);
-    --anim-2: bounce 2s infinite;
+    @keyframes scaleUp {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
 
-    --bg-3: linear-gradient(to right, #f7971e, #ffd200);
-    --shadow-3: 0 0 15px rgba(255, 210, 0, 0.7);
-    --anim-3: slideIn 3s ease-in-out infinite;
+    .call-btn {
+      padding: 16px 32px;
+      font-size: 18px;
+      color: white;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      text-transform: uppercase;
+      width: 100%;
+      transition: all 0.3s ease;
+      background: var(--bg-4);
+      box-shadow: var(--shadow-4);
+      animation: var(--anim-4);
+       margin: 20px auto;
+      max-width: 300px;
+      text-align: center;
+    }
 
-    --bg-4: linear-gradient(to right, #00f2fe, #4facfe);
-    --shadow-4: 0 0 20px rgba(0, 242, 254, 0.6);
-    --anim-4: scaleUp 2s infinite;
-
-    --bg-5: linear-gradient(to right, #7f00ff, #e100ff);
-    --shadow-5: 0 0 18px rgba(113, 0, 255, 0.8);
-    --anim-5: floatPulse 2.5s infinite;
-
-    --bg-6: linear-gradient(to right, #ff416c, #ff4b2b);
-    --shadow-6: 0 0 15px rgba(255, 75, 43, 0.7);
-    --anim-6: flip 2.2s infinite;
-
-    --bg-7: linear-gradient(to right, #1d976c, #93f9b9);
-    --shadow-7: 0 0 16px rgba(29, 151, 108, 0.6);
-    --anim-7: heartbeat 1.6s infinite;
-
-    --bg-8: linear-gradient(to right, #ff5f6d, #ffc371);
-    --shadow-8: 0 0 20px rgba(255, 95, 109, 0.5);
-    --anim-8: pop 1.8s ease-in-out infinite;
-
-    --bg-9: linear-gradient(to right, #8e2de2, #4a00e0);
-    --shadow-9: 0 0 14px rgba(138, 35, 135, 0.8);
-    --anim-9: shimmer 2s linear infinite;
-
-    --bg-10: linear-gradient(to right, #11998e, #38ef7d);
-    --shadow-10: 0 0 18px rgba(17, 153, 142, 0.7);
-    --anim-10: rotatePulse 2.5s ease-in-out infinite;
-  }
-
-  @keyframes pulse-blue {
-    0%, 100% { box-shadow: 0 0 10px rgba(0, 114, 255, 0.7); }
-    50% { box-shadow: 0 0 25px rgba(0, 114, 255, 1); }
-  }
-
-  @keyframes bounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
-  }
-
-  @keyframes slideIn {
-    0% { transform: translateX(-100%); opacity: 0; }
-    100% { transform: translateX(0); opacity: 1; }
-  }
-
-  @keyframes scaleUp {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.1); }
-  }
-
-  @keyframes floatPulse {
-    0% { transform: translateY(0); }
-    50% { transform: translateY(-5px); }
-    100% { transform: translateY(0); }
-  }
-
-  @keyframes flip {
-    0% { transform: rotateY(0); }
-    50% { transform: rotateY(180deg); }
-    100% { transform: rotateY(0); }
-  }
-
-  @keyframes heartbeat {
-    0%, 100% { transform: scale(1); }
-    25% { transform: scale(1.1); }
-    50% { transform: scale(0.9); }
-    75% { transform: scale(1.05); }
-  }
-
-  @keyframes pop {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.2); }
-    100% { transform: scale(1); }
-  }
-
-  @keyframes shimmer {
-    0% { background-position: -100% 0; }
-    100% { background-position: 200% 0; }
-  }
-
-  @keyframes rotatePulse {
-    0% { transform: rotate(0deg); }
-    50% { transform: rotate(2deg); }
-    100% { transform: rotate(-2deg); }
-  }
-</style>
-
+   
+  </style>
 </head>
 <body>
 
-    <div style="margin: 20px auto; max-width: 300px; text-align: center;">
-        <button onclick="window.location.href='tel:+919999999999';" style="
-            padding: 16px 32px;
-            font-size: 18px;
-            color: white;
-            border: none;
-            border-radius: 12px;
-            cursor: pointer;
-            text-transform: uppercase;
-            width: 100%;
-            transition: all 0.3s ease;
-            background: var(--bg-1);
-            box-shadow: var(--shadow-1);
-            animation: var(--anim-1);
-        ">Call Now</button>
-    </div>
-    
-    <div style="margin: 20px auto; max-width: 300px; text-align: center;">
-        <button onclick="window.location.href='tel:+919999999999';" style="
-            padding: 16px 32px;
-            font-size: 18px;
-            color: white;
-            border: none;
-            border-radius: 12px;
-            cursor: pointer;
-            text-transform: uppercase;
-            width: 100%;
-            transition: all 0.3s ease;
-            background: var(--bg-2);
-            box-shadow: var(--shadow-2);
-            animation: var(--anim-2);
-        ">Call Now</button>
-    </div>
-    
-    <div style="margin: 20px auto; max-width: 300px; text-align: center;">
-        <button onclick="window.location.href='tel:+919999999999';" style="
-            padding: 16px 32px;
-            font-size: 18px;
-            color: white;
-            border: none;
-            border-radius: 12px;
-            cursor: pointer;
-            text-transform: uppercase;
-            width: 100%;
-            transition: all 0.3s ease;
-            background: var(--bg-3);
-            box-shadow: var(--shadow-3);
-            animation: var(--anim-3);
-        ">Call Now</button>
-    </div>
-    
-    <div style="margin: 20px auto; max-width: 300px; text-align: center;">
-        <button onclick="window.location.href='tel:+919999999999';" style="
-            padding: 16px 32px;
-            font-size: 18px;
-            color: white;
-            border: none;
-            border-radius: 12px;
-            cursor: pointer;
-            text-transform: uppercase;
-            width: 100%;
-            transition: all 0.3s ease;
-            background: var(--bg-4);
-            box-shadow: var(--shadow-4);
-            animation: var(--anim-4);
-        ">Call Now</button>
-    </div>
-    
-    <div style="margin: 20px auto; max-width: 300px; text-align: center;">
-        <button onclick="window.location.href='tel:+919999999999';" style="
-            padding: 16px 32px;
-            font-size: 18px;
-            color: white;
-            border: none;
-            border-radius: 12px;
-            cursor: pointer;
-            text-transform: uppercase;
-            width: 100%;
-            transition: all 0.3s ease;
-            background: var(--bg-5);
-            box-shadow: var(--shadow-5);
-            animation: var(--anim-5);
-        ">Call Now</button>
-    </div>
-    
-    <div style="margin: 20px auto; max-width: 300px; text-align: center;">
-        <button onclick="window.location.href='tel:+919999999999';" style="
-            padding: 16px 32px;
-            font-size: 18px;
-            color: white;
-            border: none;
-            border-radius: 12px;
-            cursor: pointer;
-            text-transform: uppercase;
-            width: 100%;
-            transition: all 0.3s ease;
-            background: var(--bg-6);
-            box-shadow: var(--shadow-6);
-            animation: var(--anim-6);
-        ">Call Now</button>
-    </div>
-    
-    <div style="margin: 20px auto; max-width: 300px; text-align: center;">
-        <button onclick="window.location.href='tel:+919999999999';" style="
-            padding: 16px 32px;
-            font-size: 18px;
-            color: white;
-            border: none;
-            border-radius: 12px;
-            cursor: pointer;
-            text-transform: uppercase;
-            width: 100%;
-            transition: all 0.3s ease;
-            background: var(--bg-7);
-            box-shadow: var(--shadow-7);
-            animation: var(--anim-7);
-        ">Call Now</button>
-    </div>
-    
-    <div style="margin: 20px auto; max-width: 300px; text-align: center;">
-        <button onclick="window.location.href='tel:+919999999999';" style="
-            padding: 16px 32px;
-            font-size: 18px;
-            color: white;
-            border: none;
-            border-radius: 12px;
-            cursor: pointer;
-            text-transform: uppercase;
-            width: 100%;
-            transition: all 0.3s ease;
-            background: var(--bg-8);
-            box-shadow: var(--shadow-8);
-            animation: var(--anim-8);
-        ">Call Now</button>
-    </div>
-    
-    <div style="margin: 20px auto; max-width: 300px; text-align: center;">
-        <button onclick="window.location.href='tel:+919999999999';" style="
-            padding: 16px 32px;
-            font-size: 18px;
-            color: white;
-            border: none;
-            border-radius: 12px;
-            cursor: pointer;
-            text-transform: uppercase;
-            width: 100%;
-            transition: all 0.3s ease;
-            background: var(--bg-9);
-            box-shadow: var(--shadow-9);
-            animation: var(--anim-9);
-        ">Call Now</button>
-    </div>
-    
-    <div style="margin: 20px auto; max-width: 300px; text-align: center;">
-        <button onclick="window.location.href='tel:+919999999999';" style="
-            padding: 16px 32px;
-            font-size: 18px;
-            color: white;
-            border: none;
-            border-radius: 12px;
-            cursor: pointer;
-            text-transform: uppercase;
-            width: 100%;
-            transition: all 0.3s ease;
-            background: var(--bg-10);
-            box-shadow: var(--shadow-10);
-            animation: var(--anim-10);
-        ">Call Now</button>
-    </div>
-    
+  
+    <button onclick="window.location.href='tel:+919999999999';" class="call-btn">
+      Call Now4
+    </button>
+ 
+
 </body>
 </html>

@@ -16,8 +16,40 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 
 
+<style>
+  .rain {
+    pointer-events: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    overflow: hidden;
+  }
 
+  .raindrop {
+    position: absolute;
+    width: 2px;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.2);
+    animation: fall linear infinite;
+  }
 
+  @keyframes fall {
+    0% {
+      transform: translateY(-100px);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(100vh);
+      opacity: 0;
+    }
+  }
+</style>
+
+<!-- Include Party.js (for confetti explosion) -->
+<script src="https://cdn.jsdelivr.net/npm/party-js@latest/bundle/party.min.js"></script>
 
 
 </head>
@@ -43,7 +75,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <div class="question-container">
                 <!-- Question 1 -->
                 <div class="question active" id="q1">
-                    <h2>Are you a homeowner?</h2>
+                    <h2>1. Are you a homeowner?</h2>
                     <div class="options">
                         <div class="option positive" onclick="selectAnswer('yes', 1)">
                             Yes, I own my home
@@ -100,23 +132,32 @@ function updateProgress(num) {
     }
 
     /* ---------- Congrats ---------- */
-   function showCongrats() {
-  // Fill the progress bar to 100%
+function showCongrats() {
   document.getElementById("progressFill").style.width = "100%";
 
-  // Show the congrats section
-  document.getElementById("congoDiv").style.display = "block";
-}
+  const congoDiv = document.getElementById("congoDiv");
+  congoDiv.style.display = "block";
 
-    /* ---------- Init ---------- */
-   document.addEventListener("DOMContentLoaded", () => {
-  showQuestion(currentQuestion);       // shows Q1
-  updateProgress(currentQuestion);     // 🔁 now sets 33% immediately
-});
+  // Confetti
+  party.confetti(congoDiv, {
+    count: 150,
+    spread: 80,
+    speed: 600,
+  });
+
+  // Safe play after user interaction
+  const sound = document.getElementById("celebrationSound");
+  if (sound) {
+    sound.currentTime = 0;
+    sound.play().catch(e => {
+      console.warn("Audio play blocked:", e);
+    });
+  }
+}
   </script>
                 <!-- Question 2 -->
                 <div class="question" id="q2">
-                    <h2>Is your home currently insured?</h2>
+                    <h2>2. Is your home currently insured?</h2>
                     <div class="options">
                         <div class="option positive" onclick="selectAnswer('yes', 2)">
                             Yes, I have home insurance
@@ -129,7 +170,7 @@ function updateProgress(num) {
 
                 <!-- Question 3 -->
                 <div class="question" id="q3">
-                    <h2>What is your age group?</h2>
+                    <h2>3. What is your age group?</h2>
                     <div class="options">
                         <div class="option neutral" onclick="selectAnswer('18-24', 3)">
                             18 to 24
@@ -157,14 +198,19 @@ function updateProgress(num) {
 <!-- Congrats Section -->
 <div class="congo-div" id="congoDiv" style="display: none;">
   <div class="congo-card">
-    <div class="confetti">🎉</div>
-    <h2 class="congrats-heading">You're Pre-Qualified!</h2>
-    <p class="success-msg">You may be eligible for major savings on your home insurance.</p>
+    <div class="confetti"></div>
+    <h2 class="congrats-heading">Congratulations!   You are Pre-Qualified!</h2>
+    <p class="success-msg">Make a quick call to claim discount on your Home insurance</p>
     <p class="followup">Tap below to confirm with a licensed agent:</p>
 
-    <a href="tel:+18333312711" class="call-button glow shimmer">📞 Call Now: (833) 331‑2711</a>
+    <a href="tel:+18333312711" class="call-button glow shimmer">Call (833) 331‑2711</a>
 
     <p class="note">Available 8AM – 9PM EST • No obligation to enroll</p>
+    <div class="timer">
+                <div class="timer-cell" id="minutes">2</div>
+                <div class="timer-cell">:</div>
+                <div class="timer-cell" id="seconds">49</div>
+            </div>
   </div>
 </div>
 
@@ -192,6 +238,33 @@ function updateProgress(num) {
                 <div class="review-location">Simons, Zonal</div>
             </div>
         </div>
+<script>
+  let minutesEl = document.getElementById("minutes");
+  let secondsEl = document.getElementById("seconds");
 
+  let minutes = parseInt(minutesEl.innerText);
+  let seconds = parseInt(secondsEl.innerText);
+
+  function updateTimer() {
+    if (minutes === 0 && seconds === 0) {
+      clearInterval(timerInterval);
+      return;
+    }
+
+    if (seconds === 0) {
+      minutes--;
+      seconds = 59;
+    } else {
+      seconds--;
+    }
+
+    // Update DOM
+    minutesEl.innerText = String(minutes).padStart(2, '0');
+    secondsEl.innerText = String(seconds).padStart(2, '0');
+  }
+
+  const timerInterval = setInterval(updateTimer, 1000);
+</script>
+<audio id="celebrationSound" src="./crowd.mp3" preload="auto"></audio>
 </body>
 </html>

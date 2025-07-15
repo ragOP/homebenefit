@@ -13,7 +13,19 @@ body {
   margin: 0;
   padding: 0;
 }
+#congoDiv {
+  animation: popFade 1s ease-in-out;
+  border: 2px solid #0af;
+  background: linear-gradient(to right, #e0f7fa, #f1f8ff);
+  box-shadow: 0 0 30px rgba(0, 170, 255, 0.3);
+  border-radius: 15px;
+  padding: 25px;
+}
 
+@keyframes popFade {
+  0% { transform: scale(0.9); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
 .header-bar {
   background: #2c3e50;
   color: white;
@@ -37,7 +49,7 @@ body {
 .subheadline{
               
             color: #e74c3c;
-            font-size: 1.8em;
+            font-size: 1.9em;
   font-weight: bold;
   text-align: center;
  
@@ -52,7 +64,7 @@ body {
   padding: 1em 1em 1.5em 0.5em;
   margin: 1em 3em 1.5em 3em;
   border-radius: 0.3em;
-  font-size: 1.2em;
+  font-size: 1.3em;
   color: #856404;
   text-align: center;
   font-weight: bold;
@@ -73,7 +85,7 @@ body {
 }
 
 .progress-fill {
- height: 0.35rem;   
+ height: 0.52rem;   
   background: #28a745;
   width: 33%;
  
@@ -103,10 +115,19 @@ body {
   color: #333;
   font-weight: bold;
 }
+ :root {
+      --bg-4: linear-gradient(to right, #00f2fe, #4facfe);
+      /* --shadow-4: 0 0 20px rgba(0, 242, 254, 0.6); */
+      --anim-4: scaleUp 2s infinite;
+    }
 
+    @keyframes scaleUp {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
 .options {
   display: grid;
-  gap: 0.625em;               /* 10px → 0.625em */
+  gap: 0.825em;               /* 10px → 0.625em */
   margin-bottom: 1.25em;      /* 20px → 1.25em */
   max-width: 45em;  
       /* 400px → 25rem */
@@ -120,13 +141,14 @@ body {
   border-radius: 0.5em;
   cursor: pointer;
   transition: all 0.3s ease;
-  font-size: 1.35em;
+  font-size: 1.55em;
   font-weight: 500;
   color: #333;
   text-align: center;
   box-shadow: 0 0.125em 0.25em rgba(0,0,0,0.1);
   position: relative;
   background: linear-gradient(145deg, #ffffff, #f0f0f0);
+  
 
   
 }
@@ -137,6 +159,10 @@ body {
   border-color: #28a745;
   color: #155724;
   box-shadow: 0 0.1875em 0.375em rgba(40, 167, 69, 0.2);
+   transition: all 0.3s ease;
+    
+      box-shadow: var(--shadow-4);
+      animation: var(--anim-4);
 }
 
 .option.positive:hover {
@@ -296,28 +322,28 @@ body {
 }
 
 .congrats-heading {
-  font-size: 2rem;
+  font-size: 1.7rem;
   color: #155724;
   font-weight: 800;
   margin-bottom: 0.8rem;
 }
 
 .success-msg {
-  font-size: 1.1rem;
+  font-size: 1.6rem;
   color: #333;
   margin-bottom: 0.8rem;
 }
 
 .followup {
-  font-size: 1rem;
+  font-size: 1.3rem;
   color: #555;
   margin-bottom: 1.5rem;
 }
 
 .call-button {
   display: inline-block;
-  padding: 0.9rem 2rem;
-  font-size: 1.8rem;
+  padding: 1.9rem 5.4rem 1.9rem 5.4rem;
+  font-size: 2.2rem;
   color: white;
   background: #28a745;
   border-radius: 50px;
@@ -331,7 +357,20 @@ body {
   transform: scale(1.05);
   box-shadow: 0 0 20px rgba(40, 167, 69, 0.8);
 }
-
+.timer{
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+    background: transparent;
+    padding: 0.25rem 1rem;
+    color: red;
+    border: 2px dashed red;
+    margin-top: 0.5rem;
+    margin-left: auto;
+    margin-right: auto;
+    width: max-content;
+    display: flex;
+    flex-direction: row;
+  }
 /* Glow effect */
 /* Softer Glow Effect */
 .glow {
