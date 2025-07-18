@@ -1,11 +1,307 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Home benefit</title>
+  <script src=//b-js.ringba.com/CAd64139b85858476586aacfbf3bd5c2ee async></script>
+  <!-- Google Tag Manager -->
+  <script>(function (w, d, s, l, i) {
+      w[l] = w[l] || []; w[l].push({
+        'gtm.start':
+          new Date().getTime(), event: 'gtm.js'
+      }); var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+          'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-TWLTGL34');</script>
+  <!-- End Google Tag Manager -->
+
+
+
+  <style>
+    .rain {
+      pointer-events: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 9999;
+      overflow: hidden;
+    }
+
+    .raindrop {
+      position: absolute;
+      width: 2px;
+      height: 60px;
+      background: rgba(255, 255, 255, 0.2);
+      animation: fall linear infinite;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(-100px);
+        opacity: 1;
+      }
+
+      100% {
+        transform: translateY(100vh);
+        opacity: 0;
+      }
+    }
+  </style>
+
+  <!-- Include Party.js (for confetti explosion) -->
+  <script src="https://cdn.jsdelivr.net/npm/party-js@latest/bundle/party.min.js"></script>
+
+
 </head>
+
 <body>
-    Helo Page
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TWLTGL34" height="0" width="0"
+      style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <div class="header-bar">
+    Home Insurance Reduction Program
+  </div>
+  <h1 class="headline">My Home Insurance Went From $285 a Month to JUST $42/Mo For Full Coverage</h1>
+  <p class="subheadline">See if you qualify for subsidy insurance in under 30 seconds!</p>
+  <div class="urgency-text">
+    ⚠️ LIMITED TIME: Subsidy Program Expires Soon - Check Eligibility Now
+  </div>
+
+  <div class="quiz-container">
+    <div class="progress-bar">
+      <div class="progress-fill" id="progressFill"></div>
+    </div>
+
+    <div class="question-container">
+      <!-- Question 1 -->
+      <div class="question active" id="q1">
+        <h2>1. Are you a homeowner?</h2>
+        <div class="options">
+          <div class="option positive" onclick="selectAnswer('yes', 1)">
+            Yes, I own my home
+          </div>
+          <div class="option negative" onclick="selectAnswer('no', 1)">
+            No, I rent
+          </div>
+        </div>
+      </div>
+      <script>
+        let currentQuestion = 1;
+        const totalQuestions = 3;
+
+        /* ---------- Helpers ---------- */
+        function showQuestion(num) {
+          // hide all
+          for (let i = 1; i <= totalQuestions; i++) {
+            document.getElementById("q" + i).classList.remove("active");
+          }
+          // show selected
+          const qDiv = document.getElementById("q" + num);
+          if (qDiv) qDiv.classList.add("active");
+
+          updateProgress(num); // update bar
+        }
+
+        function updateProgress(num) {
+          const percent = (num / totalQuestions) * 100;
+          document.getElementById("progressFill").style.width = percent + "%";
+        }
+
+        /* ---------- Click handler ---------- */
+        function selectAnswer(answer, questionNum) {
+          const qDiv = document.getElementById("q" + questionNum);
+          qDiv.querySelectorAll(".option").forEach(o => o.classList.remove("selected"));
+          event.currentTarget.classList.add("selected");
+
+          // optional ripple
+          const ripple = document.createElement("span");
+          ripple.className = "ripple";
+          event.currentTarget.appendChild(ripple);
+          setTimeout(() => ripple.remove(), 400);
+
+          // next step
+          setTimeout(() => {
+            if (questionNum < totalQuestions) {
+              currentQuestion++;
+              showQuestion(currentQuestion);
+            } else {
+              document.querySelector(".question-container").style.display = "none";
+              stepProcess();
+            }
+          }, 300);
+        }
+
+        const stepProcess = () => {
+        const statusDiv = document.getElementById("status");
+        const statusMessage = document.getElementById("statusMessage");
+            statusDiv.style.display = "flex";
+            statusMessage.textContent = "Reviewing Your Answers...";
+
+            setTimeout(() => {
+                statusMessage.textContent = "Matching With Best Options...";
+                setTimeout(() => {
+                    statusMessage.textContent = "Confirming Eligibility...";
+                    setTimeout(() => {
+                        statusDiv.style.display = "none";
+                        showCongrats();
+                    }, 1500);
+                }, 1500);
+            }, 1500);
+        };
+
+        /* ---------- Congrats ---------- */
+        function showCongrats() {
+          document.getElementById("progressFill").style.width = "100%";
+
+          const congoDiv = document.getElementById("congoDiv");
+          congoDiv.style.display = "block";
+
+          // Confetti
+          party.confetti(congoDiv, {
+            count: 150,
+            spread: 80,
+            speed: 600,
+          });
+
+          // Safe play after user interaction
+          const sound = document.getElementById("celebrationSound");
+          if (sound) {
+            sound.currentTime = 0;
+            sound.play().catch(e => {
+              console.warn("Audio play blocked:", e);
+            });
+          }
+        }
+      </script>
+      <!-- Question 2 -->
+      <div class="question" id="q2">
+        <h2>2. Is your home currently insured?</h2>
+        <div class="options">
+          <div class="option positive" onclick="selectAnswer('yes', 2)">
+            Yes, I have home insurance
+          </div>
+          <div class="option negative" onclick="selectAnswer('no', 2)">
+            No, I need new coverage
+          </div>
+        </div>
+      </div>
+
+      <!-- Question 3 -->
+      <div class="question" id="q3">
+        <h2>3. What is your age group?</h2>
+        <div class="options">
+          <div class="option neutral" onclick="selectAnswer('18-24', 3)">
+            18 to 24
+          </div>
+          <div class="option neutral" onclick="selectAnswer('25-34', 3)">
+            25 to 34
+          </div>
+          <div class="option neutral" onclick="selectAnswer('35-44', 3)">
+            35 to 44
+          </div>
+          <div class="option neutral" onclick="selectAnswer('45-54', 3)">
+            45 to 54
+          </div>
+          <div class="option neutral" onclick="selectAnswer('55-64', 3)">
+            55 to 64
+          </div>
+          <div class="option neutral" onclick="selectAnswer('65+', 3)">
+            65+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Checking Section -->
+  <div class="checking hidden" style="font-weight: 700; display: none;" id="status">
+    <span id="statusMessage"></span>
+  </div>
+
+  <!-- Congrats Section -->
+  <div class="congo-div" id="congoDiv" style="display: none;">
+    <div class="congo-card">
+      <div class="confetti"></div>
+      <h2 class="congrats-heading">Congratulations, You Are Pre-Qualified!</h2>
+      <p class="success-msg">Make a quick call to claim discount on your Home insurance</p>
+      <p class="followup">Tap below to confirm with a licensed agent:</p>
+
+      <a href="tel:+18333312711" class="call-button glow shimmer">Call (833) 331‑2711</a>
+
+      <div class="sub-description">
+        Due to high call volume, your official agent is waiting for only <b>3 minutes</b>, then your spot will
+        not be reserved.
+    </div>
+    
+      <!-- <p class="note">Available 8AM – 9PM EST • No obligation to enroll</p> -->
+      <div class="timer">
+        <div class="timer-cell" id="minutes">2</div>
+        <div class="timer-cell">:</div>
+        <div class="timer-cell" id="seconds">49</div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="social-proof-section">
+    <div class="social-proof-header">
+      ⭐ What Our Customers Are Saying
+    </div>
+
+    <div class="review">
+      <div class="review-stars">⭐⭐⭐⭐⭐</div>
+      <div class="review-text">
+        I couldn’t believe it when my home insurance went from $315/month to just $49/month! This subsidy program saved
+        me over $3,000 a year. The process was quick and easy.
+      </div>
+      <div class="review-author">Angela M.</div>
+      <div class="review-location">Zampa, Miami</div>
+    </div>
+
+    <div class="review">
+      <div class="review-stars">⭐⭐⭐⭐⭐</div>
+      <div class="review-text">
+        My friend mentioned this program and I didn’t believe it. But I really am saving $268/month on my insurance with
+        the same great coverage!
+      </div>
+      <div class="review-author">Jamine K.</div>
+      <div class="review-location">Simons, Zonal</div>
+    </div>
+  </div>
+  <script>
+    let minutesEl = document.getElementById("minutes");
+    let secondsEl = document.getElementById("seconds");
+
+    let minutes = parseInt(minutesEl.innerText);
+    let seconds = parseInt(secondsEl.innerText);
+
+    function updateTimer() {
+      if (minutes === 0 && seconds === 0) {
+        clearInterval(timerInterval);
+        return;
+      }
+
+      if (seconds === 0) {
+        minutes--;
+        seconds = 59;
+      } else {
+        seconds--;
+      }
+
+      // Update DOM
+      minutesEl.innerText = String(minutes).padStart(2, '0');
+      secondsEl.innerText = String(seconds).padStart(2, '0');
+    }
+
+    const timerInterval = setInterval(updateTimer, 1000);
+  </script>
+  <!-- <audio id="celebrationSound" src="./crowd.mp3" preload="auto"></audio> -->
 </body>
+
 </html>
